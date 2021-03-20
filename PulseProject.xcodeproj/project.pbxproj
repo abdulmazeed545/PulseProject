@@ -75,21 +75,45 @@
 		0441AE7426031D1300F89AA4 /* PulseProject */ = {
 			isa = PBXGroup;
 			children = (
+				044BA7072605B2400065FD9C /* Models */,
+				044BA7062605B23A0065FD9C /* View */,
+				044BA7052605B2300065FD9C /* Controllers */,
 				0441AE7526031D1300F89AA4 /* AppDelegate.swift */,
 				0441AE7726031D1300F89AA4 /* SceneDelegate.swift */,
-				0444BE792604A0B800B4241D /* LoginDataParsing.swift */,
-				0444BE7D2604A33300B4241D /* LoginDataModel.swift */,
-				0444BE75260488DE00B4241D /* HomeViewController.swift */,
-				0444BE832604BF0000B4241D /* RegisterViewController.swift */,
-				0444BEAE2604DED100B4241D /* UserHomeController.swift */,
-				0441AE7B26031D1300F89AA4 /* Main.storyboard */,
 				0441AE8126031D1900F89AA4 /* Assets.xcassets */,
-				0441AE8326031D1900F89AA4 /* LaunchScreen.storyboard */,
 				0441AE8626031D1900F89AA4 /* Info.plist */,
 				0441AE7E26031D1300F89AA4 /* PulseProject.xcdatamodeld */,
 				0444BE802604A3CF00B4241D /* Constants.swift */,
 			);
 			path = PulseProject;
+			sourceTree = "<group>";
+		};
+		044BA7052605B2300065FD9C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0444BE75260488DE00B4241D /* HomeViewController.swift */,
+				0444BE832604BF0000B4241D /* RegisterViewController.swift */,
+				0444BEAE2604DED100B4241D /* UserHomeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		044BA7062605B23A0065FD9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0441AE7B26031D1300F89AA4 /* Main.storyboard */,
+				0441AE8326031D1900F89AA4 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		044BA7072605B2400065FD9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0444BE7D2604A33300B4241D /* LoginDataModel.swift */,
+				0444BE792604A0B800B4241D /* LoginDataParsing.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0907CB157F5127B817ABB4D1 /* Frameworks */ = {

@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import SQLite
 struct LoginDataParsing {
     
     static let shared = LoginDataParsing()
+    
     
     func dataParser(serviceVariables:String, completion: @escaping (LoginDataModel) -> Void)
     {
@@ -26,10 +28,13 @@ struct LoginDataParsing {
                 
                 do{
                     let loginData = try JSONDecoder().decode(LoginDataModel.self, from: data!)
+                    
+                    
+                    print(loginData)
                     completion(loginData)
                     
                 }catch{
-                    print("Error occured")
+                    print("Error occured:\(error.localizedDescription)")
                 }
             }
             
