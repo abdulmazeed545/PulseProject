@@ -317,19 +317,38 @@
                                     <action selector="logOut:" destination="4uQ-nQ-EyD" eventType="touchUpInside" id="COj-g8-11w"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ahk-cz-n1u">
-                                <rect key="frame" x="0.0" y="44" width="414" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ahk-cz-n1u">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jhp-dj-85E"/>
+                                </constraints>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="mySegmentAction:" destination="4uQ-nQ-EyD" eventType="valueChanged" id="Txv-d7-owL"/>
+                                </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NCL-Ln-aSY">
+                                <rect key="frame" x="0.0" y="266" width="414" height="630"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vnx-FV-VRD"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ahk-cz-n1u" firstAttribute="trailing" secondItem="vnx-FV-VRD" secondAttribute="trailing" id="2OS-PE-cFb"/>
+                            <constraint firstItem="Ahk-cz-n1u" firstAttribute="top" secondItem="vnx-FV-VRD" secondAttribute="top" id="3Ub-xl-fKU"/>
+                            <constraint firstItem="Ahk-cz-n1u" firstAttribute="leading" secondItem="vnx-FV-VRD" secondAttribute="leading" id="HbN-4L-3WM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cdL-4q-eok"/>
+                    <connections>
+                        <outlet property="mySegment" destination="Ahk-cz-n1u" id="03d-nh-Jgi"/>
+                        <outlet property="tableView" destination="NCL-Ln-aSY" id="qHW-hr-wL7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPg-2H-u3t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

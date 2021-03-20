@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     var databaseConnection:Connection!
     var path:String = ""
     var loggedIN:String = ""
-    
+    var login:[LoginDataModel] = []
     @IBOutlet weak var email: UITextField!
     
     @IBOutlet weak var innerView: UIView!
@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
            
             let userHome = self.storyboard?.instantiateViewController(identifier: "userhome") as! UserHomeController
             userHome.databaseConnection = databaseConnection
+            userHome.login = login
             navigationController?.pushViewController(userHome, animated: true)
         }
         // Do any additional setup after loading the view.
@@ -74,6 +75,8 @@ class HomeViewController: UIViewController {
         LoginDataParsing.shared.dataParser(serviceVariables: serviceVariables) { (userLoginData) in
             
             print(userLoginData.registeredEmail)
+            let loginUser = LoginDataModel(registeredEmail: userLoginData.registeredEmail, firstName: userLoginData.firstName, surName: userLoginData.surName, profileImagePath: userLoginData.profileImagePath, studentID: userLoginData.studentID, batchID: userLoginData.batchID, role: userLoginData.role, loggedIn: userLoginData.loggedIn)
+            self.login.append(loginUser)
             do{
                 try self.databaseConnection.run("insert into pulseuser (email, loggedin) VALUES (?, ?)", userLoginData.registeredEmail, userLoginData.loggedIn)
                 print("data inserted")
@@ -85,6 +88,7 @@ class HomeViewController: UIViewController {
 
                 let userHome = self.storyboard?.instantiateViewController(identifier: "userhome") as! UserHomeController
                 userHome.databaseConnection = self.databaseConnection
+                userHome.login = self.login
                 self.navigationController?.pushViewController(userHome, animated: true)
                 
             }
