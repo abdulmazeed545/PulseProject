@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
             let userHome = self.storyboard?.instantiateViewController(identifier: "userhome") as! UserHomeController
             userHome.databaseConnection = databaseConnection
             userHome.login = login
+            
             navigationController?.pushViewController(userHome, animated: true)
         }
         // Do any additional setup after loading the view.
