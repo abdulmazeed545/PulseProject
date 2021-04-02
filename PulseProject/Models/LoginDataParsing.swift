@@ -14,9 +14,9 @@ struct LoginDataParsing {
     static let shared = LoginDataParsing()
     
     
-    func dataParser(serviceVariables:String, completion: @escaping (LoginDataModel) -> Void)
+    func dataParser<T:Codable>(urlString:String, serviceVariables:String, completion: @escaping (T) -> Void)
     {
-        var url = URLRequest(url: URL(string: Constants.baseURL + Constants.serverURL)!)
+        var url = URLRequest(url: URL(string: urlString)!)
         url.httpMethod = Constants.POST
         var service = serviceVariables
         
@@ -27,11 +27,12 @@ struct LoginDataParsing {
             if err == nil{
                 
                 do{
-                    let loginData = try JSONDecoder().decode(LoginDataModel.self, from: data!)
+                    let loginData = try JSONDecoder().decode(T.self, from: data!)
                     
                     
                     print(loginData)
                     completion(loginData)
+                    
                     
                 }catch{
                     print("Error occured:\(error.localizedDescription)")
@@ -41,5 +42,43 @@ struct LoginDataParsing {
             
         }
         dataSession.resume()
+    }
+    //Creating a function to get the student attendance details
+    func studentAttendance(completion: @escaping (DashBoard) -> Void)
+    {
+        //Creating an URL request to the server
+        var requestURL = URLRequest(url: URL(string: "https://pulse.brninfotech.com/pulse/modules/admin/DashboardSnippets.php")!)
+               
+        requestURL.httpMethod = "POST"
+        
+        //Creating and storing variable to pass the data
+        let serviceVariables = "funcName=getUserAttendance&studentIDByAdmin=NoValue"
+        
+        
+        requestURL.httpBody = serviceVariables.data(using: String.Encoding.utf8)
+        
+        //Creating an instance to the singleton class to get the data from the server
+        var session = URLSession.shared.dataTask(with: requestURL) { (data, reponse, error) in
+            //Checking the error is nil or not
+            if (error == nil)
+            {
+                do
+                {
+                    //Converting the data using JSONSerialization class
+                    var jsonData = try JSONDecoder().decode(DashBoard.self, from: data!)
+                    completion(jsonData)
+                }
+                catch
+                {
+                    print("Oops Some Error occured")
+                }
+            }
+            else
+            {
+                print("Some Error")
+            }
+        }
+        session.resume()
+        
     }
 }

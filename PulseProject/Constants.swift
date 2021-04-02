@@ -7,8 +7,9 @@
 
 import Foundation
 struct Constants {
-    static var baseURL:String = "https://pulse.brninfotech.com/pulse/modules/"
-    static var serverURL:String = "admin/ValidateLogin.php"
+    static var baseURL:String = "https://pulse.brninfotech.com/pulse/modules"
+    static var serverURL:String = "/admin/ValidateLogin.php"
+    static var dashURL: String = "/admin/DashboardSnippets.php"
     static var POST:String = "POST"
     static var registeredEmail:String = "registeredEmail="
     static var registeredPassword:String = "registeredPassword="
